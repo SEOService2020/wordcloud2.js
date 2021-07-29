@@ -424,7 +424,12 @@ if (!window.clearImmediate) {
         var x = Math.floor(eventX * ((canvas.width / rect.width) || 1) / g)
         var y = Math.floor(eventY * ((canvas.height / rect.height) || 1) / g)
 
-        return infoGrid[x][y]
+        var info = null
+        if (infoGrid[x] && infoGrid[x][y]) {
+          info = infoGrid[x][y]
+        }
+
+        return info
       }
 
     var wordcloudhover = function wordcloudhover(evt) {
