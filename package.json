@@ -1,6 +1,6 @@
 {
-  "name": "wordcloud",
-  "version": "1.2.2",
+  "name": "@seoservice2020/wordcloud",
+  "version": "1.3.0",
   "description": "Tag cloud/Wordle presentation on 2D canvas or HTML",
   "homepage": "http://timdream.org/wordcloud2.js/",
   "author": {
@@ -8,6 +8,12 @@
     "email": "timdream@gmail.com",
     "url": "http://timdream.org/"
   },
+  "contibutors": [
+    {
+      "name": "Sergey Pronin",
+      "email": "sergotail@mail.ru"
+    }
+  ],
   "keywords": [
     "cloud",
     "canvas",
@@ -20,7 +26,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/timdream/wordcloud2.js"
+    "url": "https://github.com/SEOService2020/wordcloud2.js"
   },
   "scripts": {
     "test": "grunt test",
