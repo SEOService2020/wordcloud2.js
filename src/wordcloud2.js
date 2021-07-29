@@ -229,7 +229,8 @@ if (!window.clearImmediate) {
       classes: null,
 
       hover: null,
-      click: null
+      click: null,
+      dblclick: null,
     }
 
     if (options) {
@@ -450,6 +451,16 @@ if (!window.clearImmediate) {
       }
 
       settings.click(info.item, info.dimension, evt)
+      evt.preventDefault()
+    }
+
+    var wordclouddblclick = function wordclouddblclick(evt) {
+      var info = getInfoGridFromMouseTouchEvent(evt)
+      if (!info) {
+        return
+      }
+
+      settings.dblclick(info.item, info.dimension, evt)
       evt.preventDefault()
     }
 
@@ -1129,7 +1140,7 @@ if (!window.clearImmediate) {
       }
 
       // fill the infoGrid with empty state if we need it
-      if (settings.hover || settings.click) {
+      if (settings.hover || settings.click || settings.dblclick) {
         interactive = true
 
         /* fill the grid with empty state */
@@ -1147,10 +1158,16 @@ if (!window.clearImmediate) {
           canvas.style.webkitTapHighlightColor = 'rgba(0, 0, 0, 0)'
         }
 
+        if (settings.dblclick) {
+          canvas.addEventListener('dblclick', wordclouddblclick)
+          canvas.style.webkitTapHighlightColor = 'rgba(0, 0, 0, 0)'
+        }
+
         canvas.addEventListener('wordcloudstart', function stopInteraction() {
           canvas.removeEventListener('wordcloudstart', stopInteraction)
           canvas.removeEventListener('mousemove', wordcloudhover)
           canvas.removeEventListener('click', wordcloudclick)
+          canvas.removeEventListener('dblclick', wordclouddblclick)
           hovered = undefined
         })
       }
